@@ -20,7 +20,7 @@ Resolving deltas: 100% (6277/6277), done.
     Installed v3-core 0.8
 ```
 
-`.gitmodules` contains:
+`.gitmodules` contains (no `path` specified):
 
 ```
 [submodule "lib/v3-core"]
@@ -28,9 +28,10 @@ Resolving deltas: 100% (6277/6277), done.
 	url = https://github.com/uniswap/v3-core
 ```
 
-Without a path specified.
+Note that it correctly installs the `0.8` branch at this point but does not specify the path in `.gitmodules`.
 
-This causes issues when a user now runs `forge update`.
+This causes issues when a user now runs `forge update` where it resets to `master`, making it incompatible with a `0.8` codebase.
+I remember running into this, resolving it by manually adding the branch in the `.gitmodules` file.
 
 To retry this yourself from the start:
 
